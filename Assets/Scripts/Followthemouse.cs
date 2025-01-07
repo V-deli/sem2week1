@@ -13,7 +13,7 @@ public class Followthemouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input, mouesePosition);
+        transform.position = Camera.main.ScreenToWorldPoint(Input. mouesePosition);
         transform.position = mousePos;
     }
 }
