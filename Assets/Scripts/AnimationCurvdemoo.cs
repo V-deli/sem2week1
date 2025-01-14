@@ -11,7 +11,7 @@ public AnimationCurve curve;
 
 [Range(0, 1)]
 public float t;
-{
+
     void Start()
     {
 
