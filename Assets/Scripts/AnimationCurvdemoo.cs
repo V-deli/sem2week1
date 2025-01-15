@@ -30,3 +30,4 @@ public class AnimationCurvdemoo : MonoBehaviour
         transform.localScale = Vector3.one * curve.Evaluate(t);
     }
 }
+//Attached to square
