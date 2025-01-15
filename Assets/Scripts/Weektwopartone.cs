@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Weektwopartone : MonoBehaviour
+{
+    public float rotationSpeed = 100f;
 
-//public float rotspeed =4;
-//public class Weektwopartone : MonoBehaviour
-//{
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-       
-//    }
+    void Start()
+    {
 
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        Vector2 = Camera.main.ScreenToWorldPoint();
-//        Vector2 direction = 
-//        transform.forward =direction;
-//    }
-//}
+    }
+
+
+    void Update()
+    {
+        //        Vector2 = Camera.main.ScreenToWorldPoint();
+        //        Vector2 direction = 
+        //        transform.forward =direction;
+        transform.Rotate(0, 0, - rotationSpeed * Time.deltaTime);
+
+        //I dont understand why there is a red underline under my variable name: rotspeed
+        //I wrote it on the line above the class lol- dont do that 
+        //Also clicked on capital transform instead of lower case.
+    }
+}
+    
