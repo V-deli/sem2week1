@@ -19,7 +19,7 @@ public class rotateflowerscript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            flowerrotating = false;
+            flowerrotating = !flowerrotating;
         }
         if (flowerrotating)
         {
