@@ -19,7 +19,7 @@ public class beemovingwithcurve : MonoBehaviour
     {
        time = 0; //setting the inital starting time to zero 
         // halfScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
-        beeposition = transform.position; // initialize bee to current position
+       // beeposition = transform.position; // initialize bee to current position
     }
 
 
