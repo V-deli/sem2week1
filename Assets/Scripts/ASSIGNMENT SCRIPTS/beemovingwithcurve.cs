@@ -9,6 +9,8 @@ public class beemovingwithcurve : MonoBehaviour
     public AnimationCurve curve; //public class to controll in the inepector 
     private float time; // creating a variable to evaluate animation curve
     private bool useCurve = false; //boolean that checks if the curve is activated with the specified key
+    private Vector3 beeposition; // vector of bee position for lerp
+    public float lerpSpeed = 5f; //speed variable for lerp
     //private float moveDirection = 1f;
     //private float halfScreen;
 
@@ -17,6 +19,7 @@ public class beemovingwithcurve : MonoBehaviour
     {
        time = 0; //setting the inital starting time to zero 
         // halfScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
+        beeposition = transform.position; // initialize bee to current position
     }
 
 
@@ -48,7 +51,9 @@ public class beemovingwithcurve : MonoBehaviour
             {
                 time = 0f; //...resets to 0
             }
-            beePos.y = curve.Evaluate(time); //udpates the y position of the bee, using the curve
+            float curveValue = curve.Evaluate(time); //to ge thte y value from the curve
+            beeposition = new Vector3(beePos.x, curveValue, beePos.z); //set the bees position using the curve
+            //beePos.y = curve.Evaluate(time); //udpates the y position of the bee, using the curve
             //Vector3 rot = transform.eulerAngles;
             //rot.z = curve.Evaluate(time);
             //transform.eulerAngles = rot;
@@ -56,10 +61,13 @@ public class beemovingwithcurve : MonoBehaviour
         else
         {
             time = 0f; //resets the curve if the curve is not activated
-            beePos.y = 0f; // so the bees position can stay at the intended/default y position
+                       // beePos.y = 0f; // so the bees position can stay at the intended/default y position
+            beeposition = new Vector3(beePos.x, 0f, beePos.z); //setting xyz values for vector, but defalt y
         }
-        transform.position = beePos; //this updates the position
-        }
+
+        //transform.position = beePos; //this updates the position
+        transform.position = Vector3.Lerp(transform.position, beeposition, lerpSpeed* Time.deltaTime); //lerp and delta time to smoothly transition the bees position
+    }
         //time += Time.deltaTime * speedofcurve * moveDirection;
         //float xPos = curve.Evaluate(time);
         //transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
