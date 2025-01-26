@@ -5,60 +5,60 @@ using UnityEngine;
 public class beemovingwithcurve : MonoBehaviour
 {
     
-    public float speedofcurve = 3f;
-    public AnimationCurve curve;
-    private float time;
-    private bool useCurve = false;
+    public float speedofcurve = 3f; //public variable that will be used for the speed of movement
+    public AnimationCurve curve; //public class to controll in the inepector 
+    private float time; // creating a variable to evaluate animation curve
+    private bool useCurve = false; //boolean that checks if the curve is activated with the specified key
     //private float moveDirection = 1f;
     //private float halfScreen;
 
 
     void Start()
     {
-       time = 0;
+       time = 0; //setting the inital starting time to zero 
         // halfScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
     }
 
 
     void Update()
     {
-        Vector3 beePos = transform.position;
+        Vector3 beePos = transform.position; //creating a vector that transforms its position of the bee object
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)) //if statement to see if the left shift has been pressed
         { 
-        useCurve = true;
+        useCurve = true; //if the key has been pressed, then the curve is being used
         }
         else
         {
-            useCurve= false;
+            useCurve= false; //otherwise the curve is not being used
         }
 
-        beePos.x += speedofcurve * Time.deltaTime;
+        beePos.x += speedofcurve * Time.deltaTime; // x moves horizontally, by the set speed, and stable pacing
 
-        Vector2 screenpos = Camera.main.WorldToScreenPoint(beePos);
-        if (screenpos.x < 0 ||  screenpos.x > Screen.width)
+        Vector2 screenpos = Camera.main.WorldToScreenPoint(beePos); // this chunk of code is making the bee bounce off the edges
+        if (screenpos.x < 0 ||  screenpos.x > Screen.width) //setting the parameters of the screen to bounce in
         {
-            speedofcurve = -speedofcurve;
+            speedofcurve = -speedofcurve; //once it moves to one direction, it turns back to the opposite direction and repeats
         }
 
-        if (useCurve)
+        if (useCurve) //applies the animation curve to the object if it is activated with the shift key
         {
-            time += Time.deltaTime;
-            if (time > 1f)
+            time += Time.deltaTime; // setting it to be smooth with deltatime, increased the amount thats passed since its last frame
+            if (time > 1f) //if exceeds valuee then...
             {
-                time = 0f;
+                time = 0f; //...resets to 0
             }
-            beePos.y = curve.Evaluate(time);
+            beePos.y = curve.Evaluate(time); //udpates the y position of the bee, using the curve
             //Vector3 rot = transform.eulerAngles;
             //rot.z = curve.Evaluate(time);
             //transform.eulerAngles = rot;
         }
         else
         {
-            time = 0f;
-            beePos.y = 0f;
+            time = 0f; //resets the curve if the curve is not activated
+            beePos.y = 0f; // so the bees position can stay at the intended/default y position
         }
-        transform.position = beePos;
+        transform.position = beePos; //this updates the position
         }
         //time += Time.deltaTime * speedofcurve * moveDirection;
         //float xPos = curve.Evaluate(time);
