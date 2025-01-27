@@ -20,7 +20,7 @@ public class beebouncingscreen : MonoBehaviour
 
         Vector2 screenPos = Camera.main.WorldToScreenPoint(pos); //the bee position is being edited in the screen point
 
-        if (screenPos.x <= 0 || screenPos.x >= Screen.width) //2 restraints of the screen edges for the bee, if the 
+        if (screenPos.x <= 0 || screenPos.x >= Screen.width) //i made 2 restraints of the screen edges the bee cant go passed, once its reached either the 0 0r the width it has to turn around the other way, !!! I set it also equal = to (I forgot silly me, thats why it kept getting stuck)
         {
             //bounceSpeed = Mathf.Abs(bounceSpeed);
             bounceSpeed = bounceSpeed * -1; // if the 2 conditions are met then this line of code runs saying the bee moves at this speed and once it hits the edge it goes the opposite way due to it being multiplyed by a -1

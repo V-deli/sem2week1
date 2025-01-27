@@ -17,7 +17,7 @@ public class rotateflowerscript : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //using the space key.. if space key is down then...
         {
             flowerrotating = !flowerrotating; //checks if the space bar is pressed, if so, rotating true, if its rotating and clicked, the flower stops 
         }

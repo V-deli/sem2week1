@@ -14,7 +14,7 @@ public class Followthemouse : MonoBehaviour
     void Update()
     {
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition); //the bee is being altered in the world screen, the mousePosition is being affected/used
-        float screenlimitbelow = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height / 2, 0)).y;
+        float screenlimitbelow = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height / 2, 0)).y; //making a float varible set equal to the top half of the screen height in world view
 
         if (mouse.y < screenlimitbelow) //if statment saying that if the y mouse position is less than the top half of the screen then it can preform the transformation of following the mouse position
         {
