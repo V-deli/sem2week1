@@ -8,6 +8,8 @@ public class changingthebackground : MonoBehaviour
     public Color background; // temporaly defines what the backgreound colour is set to
     //I change the colour in inspector by dropping it in an empty game object
 
+    //Couldn't change the background colour in main camera?
+
     void Start()
     {
         if (cam == null) //if statment to check if the camera var. isnt assigned in the inspector
