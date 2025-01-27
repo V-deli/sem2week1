@@ -20,11 +20,13 @@ public class changingthebackground : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) //check if the key was pressed down in that frame
-        {
-            cam.backgroundColor = background; //changes colour of camera to whats stored in variable
+        //an old idea I wanted to try out of curiousity
+        //if (Input.GetKeyDown(KeyCode.LeftShift)) //check if the key was pressed down in that frame
+        //{
+        //    cam.backgroundColor = background; //changes colour of camera to whats stored in variable
+        //}
+        cam.backgroundColor = background; //changes colour of camera to whats stored in variable
         }
-    }
 }
     
 

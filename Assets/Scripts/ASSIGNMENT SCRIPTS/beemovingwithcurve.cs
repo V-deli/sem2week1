@@ -5,7 +5,7 @@ using UnityEngine;
 public class beemovingwithcurve : MonoBehaviour
 {
     
-    public float speedofcurve = 3f; //public variable that will be used for the speed of movement
+    //public float speedofcurve = 3f; //public variable that will be used for the speed of movement
     public AnimationCurve curve; //public class to controll in the inepector 
     private float time; // creating a variable to evaluate animation curve
     private bool useCurve = false; //boolean that checks if the curve is activated with the specified key
@@ -19,13 +19,13 @@ public class beemovingwithcurve : MonoBehaviour
     {
        time = 0; //setting the inital starting time to zero 
         // halfScreen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
-       // beeposition = transform.position; // initialize bee to current position
+       beeposition = transform.position; // initialize bee to current position
     }
 
 
     void Update()
     {
-        Vector3 beePos = transform.position; //creating a vector that transforms its position of the bee object
+        //Vector3 beePos = transform.position; //creating a vector that transforms its position of the bee object
 
         if (Input.GetKey(KeyCode.LeftShift)) //if statement to see if the left shift has been pressed
         { 
@@ -36,13 +36,13 @@ public class beemovingwithcurve : MonoBehaviour
             useCurve= false; //otherwise the curve is not being used
         }
 
-        beePos.x += speedofcurve * Time.deltaTime; // x moves horizontally, by the set speed, and stable pacing
+        //beePos.x += speedofcurve * Time.deltaTime; // x moves horizontally, by the set speed, and stable pacing
 
-        Vector2 screenpos = Camera.main.WorldToScreenPoint(beePos); // this chunk of code is making the bee bounce off the edges
-        if (screenpos.x < 0 ||  screenpos.x > Screen.width) //setting the parameters of the screen to bounce in
-        {
-            speedofcurve = -speedofcurve; //once it moves to one direction, it turns back to the opposite direction and repeats
-        }
+        //Vector2 screenpos = Camera.main.WorldToScreenPoint(beePos); // this chunk of code is making the bee bounce off the edges
+        //if (screenpos.x < 0 ||  screenpos.x > Screen.width) //setting the parameters of the screen to bounce in
+        //{
+        //    speedofcurve = -speedofcurve; //once it moves to one direction, it turns back to the opposite direction and repeats
+        //}
 
         if (useCurve) //applies the animation curve to the object if it is activated with the shift key
         {
@@ -52,7 +52,7 @@ public class beemovingwithcurve : MonoBehaviour
                 time = 0f; //...resets to 0
             }
             float curveValue = curve.Evaluate(time); //to ge thte y value from the curve
-            beeposition = new Vector3(beePos.x, curveValue, beePos.z); //set the bees position using the curve
+            beeposition = new Vector3(transform.position.x, curveValue, transform.position.z); //set the bees position using the curve
             //beePos.y = curve.Evaluate(time); //udpates the y position of the bee, using the curve
             //Vector3 rot = transform.eulerAngles;
             //rot.z = curve.Evaluate(time);
@@ -62,7 +62,7 @@ public class beemovingwithcurve : MonoBehaviour
         {
             time = 0f; //resets the curve if the curve is not activated
                        // beePos.y = 0f; // so the bees position can stay at the intended/default y position
-            beeposition = new Vector3(beePos.x, 0f, beePos.z); //setting xyz values for vector, but defalt y
+            beeposition = new Vector3(transform.position.x, 0f, transform.position.z); //setting xyz values for vector, but defalt y
         }
 
         //transform.position = beePos; //this updates the position
