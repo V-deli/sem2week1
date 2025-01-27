@@ -14,7 +14,7 @@ public class changingthebackground : MonoBehaviour
         {
             cam = Camera.main; //assigns the main camera to the variable
         }
-         
+      
     }
 
 
